@@ -46,7 +46,8 @@ const addPhraseToDisplay = phrases => {
 
 }
 //Function to check if a letter is in the phrase
-
+let randomPhrase = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(randomPhrase);
 const checkLetter = button => {
   const letters = document.querySelectorAll('.keyrow') 
   let match = null;
