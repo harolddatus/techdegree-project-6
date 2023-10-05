@@ -22,19 +22,19 @@ startButton.addEventListener('click', () => {
 });
 
 //Function for a random phrase
-function getRandomPhraseAsArray (phrases){
+function getRandomPhraseAsArray(phrases){
   const randomIndex = Math.floor(Math.random()* phrases.length);
   return phrases[randomIndex].split('');
 }
 
 //Function to addPhraseToDisplay
-const addPhraseToDisplay = phrases => {
+const addPhraseToDisplay = letters => {
   const ul = document.querySelector('ul');
   ul.innerHTML = '';
 
-  for (let i = 0; i < phrases.length; i++) {
+  for (let i = 0; i < letters.length; i++) {
       const li = document.createElement('li');
-      li.textContent = phrases[i];
+      li.textContent = letters[i];
       ul.append(li);
 
       if (li.textContent.toLowerCase() !== ' ') {
@@ -79,6 +79,6 @@ qwerty.addEventListener('click', (e) => {
           tries[missed].appendChild(lostHeart);
           missed++; 
       }
-      checkWin();
+      // checkWin();
   }
 })
