@@ -49,7 +49,7 @@ const addPhraseToDisplay = letters => {
 let randomPhrase = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(randomPhrase);
 const checkLetter = button => {
-  const letters = document.querySelectorAll('.keyrow') 
+  const letters = document.querySelectorAll('.letter') 
   let match = null;
 
   letters.forEach((letters) => {
@@ -79,6 +79,55 @@ qwerty.addEventListener('click', (e) => {
           tries[missed].appendChild(lostHeart);
           missed++; 
       }
-      // checkWin();
+      checkWin();
   }
 })
+
+const checkWin = () => {
+  const letterElements = document.querySelectorAll('.letter');
+  const showElements = document.querySelectorAll('.show');
+
+  if (letterElements.length === showElements.length) {
+
+      overlay.className = 'win';
+      overlay.style.display = 'flex';
+      overlay.querySelector('.title').textContent = 'Congratulations, Harold! You won!';
+      startButton.remove();
+
+
+      // Hide the phrase when displaying the win screen
+      hidePhrase();
+
+      const buttons = document.querySelectorAll('.chosen');
+      buttons.forEach(function (element) {
+          element.classList.remove('chosen');
+          element.disabled = false;
+      });
+  } else if (missed >= 5) {
+      overlay.className = 'lose';
+      overlay.style.display = 'flex';
+      overlay.querySelector('.title').textContent = 'Sorry, Harold, You Lose. Try Again!';
+      startButton.remove()
+  
+      // Hide the phrase when displaying the lose screen
+      hidePhrase();
+
+      const buttons = document.querySelectorAll('.chosen');
+      buttons.forEach(function (element) {
+          element.classList.remove('chosen');
+          element.disabled = false;
+      });
+  }
+}
+
+// Function to hide the phrase
+function hidePhrase() {
+  const phraseList = document.querySelectorAll('#phrase ul li');
+  phraseList.forEach(li => li.style.display = 'none');
+}
+
+// Function to show the phrase
+function showPhrase() {
+  const phraseList = document.querySelectorAll('#phrase ul li');
+  phraseList.forEach(li => li.style.display = 'list-item');
+}
