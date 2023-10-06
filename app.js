@@ -106,7 +106,7 @@ const checkWin = () => {
   } else if (missed >= 5) {
       overlay.className = 'lose';
       overlay.style.display = 'flex';
-      overlay.querySelector('.title').textContent = 'Sorry, Harold, You Lose. Try Again!';
+      overlay.querySelector('.title').textContent = 'Sorry Harold, You Lose. Try Again!';
       startButton.remove()
   
       // Hide the phrase when displaying the lose screen
